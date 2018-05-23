@@ -1,6 +1,6 @@
 <template>
   <div class="index">
-    <h2>Все виды собак</h2>
+    <h2>Избранное</h2>
   </div>
 </template>
 

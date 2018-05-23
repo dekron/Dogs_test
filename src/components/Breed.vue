@@ -1,12 +1,13 @@
 <template>
   <div class="index">
-    <h2>Все виды собак</h2>
+    <h2>Порода: {{breed}}</h2>
   </div>
 </template>
 
 <script>
 export default {
   name: 'Index',
+  props: ['breed'],
   data() {
     return {
     };

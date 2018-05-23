@@ -1,8 +1,10 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import Index from '@/components/Index'
+import Vue from 'vue';
+import Router from 'vue-router';
+import Index from '@/components/Index';
+import Favorites from '@/components/Favorites';
+import Breed from '@/components/Breed';
 
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
   mode: 'history',
@@ -11,6 +13,17 @@ export default new Router({
       path: '/',
       name: 'Index',
       component: Index
+    },
+    {
+      path: '/favourites',
+      name: 'Favorites',
+      component: Favorites
+    },
+    {
+      path: '/:breed',
+      name: 'Breed',
+      component: Breed,
+      props: true
     }
   ]
-})
+});
