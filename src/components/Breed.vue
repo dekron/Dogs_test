@@ -1,17 +1,17 @@
 <template>
   <div class="index">
     <h2>Порода: {{breed}}</h2>
+    <breed-list :breed="breed"></breed-list>
   </div>
 </template>
 
 <script>
+import breedList from './partial/breedList';
+
 export default {
   name: 'Index',
-  props: ['breed'],
-  data() {
-    return {
-    };
-  }
+  components: { breedList },
+  props: ['breed']
 };
 </script>
 

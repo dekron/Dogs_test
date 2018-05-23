@@ -5,10 +5,10 @@
         <div class="navigation__title">Породы собак</div>
         <ul>
           <li><router-link to="/">Главная</router-link></li>
-          <li><a href="#">Порода</a>
+          <li><a>Порода</a>
             <ul>
               <li v-for="(breed, index) in breeds" v-bind:key="index">
-                <router-link :to="breed.link">{{breed.name}}</router-link>
+                <router-link :to="breed">{{breed}}</router-link>
               </li>
             </ul>
           </li>
@@ -25,15 +25,27 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex';
+
 export default {
   name: 'App',
-  data() {
-    return {
-      breeds: [
-        {link: 'shiba', name: 'Порода 1'},
-        {link: 'shiba2', name: 'Порода 2'}
-      ]
-    };
+  mounted() {
+    this.getAllBreeds();
+    this.getAllFavorites();
+  },
+  computed: {
+    ...mapGetters([
+      'allBreeds'
+    ]),
+    breeds() {
+      return this.allBreeds;
+    }
+  },
+  methods: {
+    ...mapActions([
+      'getAllBreeds',
+      'getAllFavorites'
+    ])
   }
 };
 </script>
@@ -74,6 +86,7 @@ export default {
         -webkit-transition: all .2s ease-in-out;
         -moz-transition: all .2s ease-in-out;
         transition: all .2s ease-in-out;
+        cursor: pointer;
         &:hover {
           background: rgba(0, 0, 0, .15);
           > ul {
@@ -99,11 +112,14 @@ export default {
         top: 100%;
         box-shadow: -3px 3px 10px -2px rgba(0, 0, 0, .1);
         border: 1px solid rgba(0, 0, 0, .1);
+        max-height: 320px;
+        overflow: hidden;
+        overflow-y: scroll;
 
         li {
           float: none;
           position: relative;
-
+          cursor: pointer;
           a {
             padding: 15px 30px;
             border-bottom: 1px solid rgba(0, 0, 0, .05);
