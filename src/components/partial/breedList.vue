@@ -58,6 +58,8 @@ export default {
     }
   },
   created() {
+    this.count = 20;
+    document.documentElement.scrollTop = 0;
     window.addEventListener('scroll', this.handleScroll);
   },
   destroyed() {
